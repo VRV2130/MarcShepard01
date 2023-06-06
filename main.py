@@ -1,5 +1,5 @@
 import requests
-import matplotlib.pyplot as plt
+from tabulate import tabulate
 
 api_key = 'e0fd96f267a7c01a2e089a841f1fd1c8' 
 
@@ -16,18 +16,16 @@ def get_weather(country, city):
         wind_speed = data['wind']['speed']
 
         print(f"Weather in {city}, {country}:")
-        print(f"Main: {main_weather}")
-        print(f"Description: {description}")
-        print(f"Temperature: {temperature}°C")
-        print(f"Humidity: {humidity}%")
-        print(f"Wind Speed: {wind_speed} m/s")
-
-        # Plotting the temperature
-        plt.bar(['Temperature'], [temperature], color='blue')
-        plt.xlabel('Weather Attribute')
-        plt.ylabel('Value')
-        plt.title(f"Weather in {city}, {country}")
-        plt.show()
+        print("----------------------------")
+        weather_data = [
+            ['Main', main_weather],
+            ['Description', description],
+            ['Temperature', f"{temperature}°C"],
+            ['Humidity', f"{humidity}%"],
+            ['Wind Speed', f"{wind_speed} m/s"]
+        ]
+        print(tabulate(weather_data, headers=['Attribute', 'Value'], tablefmt='grid'))
+    
     else:
         print("Failed to fetch weather data.")
         print(response.status_code)
