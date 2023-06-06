@@ -1,6 +1,6 @@
 import requests
 
-api_key = 'Yf1150dcc35f77a426b1b58d28732718aCa'  # Replace with your OpenWeatherMap API key
+api_key = 'e0fd96f267a7c01a2e089a841f1fd1c8' 
 
 def get_weather(country, city):
     url = f'http://api.openweathermap.org/data/2.5/weather?q={city},{country}&appid={api_key}&units=metric'
@@ -22,8 +22,11 @@ def get_weather(country, city):
         print(f"Wind Speed: {wind_speed} m/s")
     else:
         print("Failed to fetch weather data.")
+        print(response.status_code)
+        print(response.content)
 
-country = input("Enter the country: ")
-city = input("Enter the city: ")
 
-get_weather(country, city)
+countryU = input("Enter the country: ")
+cityU = input("Enter the city: ")
+
+get_weather(countryU, cityU)
