@@ -1,4 +1,5 @@
 import requests
+import matplotlib.pyplot as plt
 
 api_key = 'e0fd96f267a7c01a2e089a841f1fd1c8' 
 
@@ -20,6 +21,13 @@ def get_weather(country, city):
         print(f"Temperature: {temperature}°C")
         print(f"Humidity: {humidity}%")
         print(f"Wind Speed: {wind_speed} m/s")
+
+        # Plotting the temperature
+        plt.bar(['Temperature'], [temperature], color='blue')
+        plt.xlabel('Weather Attribute')
+        plt.ylabel('Value')
+        plt.title(f"Weather in {city}, {country}")
+        plt.show()
     else:
         print("Failed to fetch weather data.")
         print(response.status_code)
