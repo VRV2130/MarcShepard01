@@ -25,8 +25,12 @@ def get_weather(country, city):
         print(response.status_code)
         print(response.content)
 
+while True:
+    countryU = input("Enter the country: ")
+    cityU = input("Enter the city: ")
 
-countryU = input("Enter the country: ")
-cityU = input("Enter the city: ")
+    get_weather(countryU, cityU)
 
-get_weather(countryU, cityU)
+    choice = input("Do you want to check weather for another location? (y/n): ")
+    if choice.lower() != 'y':
+        break
