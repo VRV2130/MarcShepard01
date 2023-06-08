@@ -2,7 +2,7 @@ import requests
 from tabulate import tabulate
 
 api_key = 'e0fd96f267a7c01a2e089a841f1fd1c8' 
-
+#Stupid. You shouldn't put your API key on public docuements! Poeple can steal it!.
 def get_weather(country, city):
     url = f'http://api.openweathermap.org/data/2.5/weather?q={city},{country}&appid={api_key}&units=metric'
     response = requests.get(url)
